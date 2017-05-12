@@ -1,0 +1,60 @@
+{% if include.video_url %}
+<p>Error: video_url not given</p>
+{% elsif include.divid %}
+<p>Error: divid not given</p>
+<div id="{{ include.divid }}" class="dplayer"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dplayer/1.1.4/DPlayer.min.js"></script>
+<script>
+    var dp = new DPlayer({
+        element: document.getElementById('{{ include.divid }}'),
+        {% if include.autoplay %}
+        autoplay: {{ include.autoplay }},
+        {% endif %}
+        {% if include.theme %}
+        theme: '{{ include.theme }}',
+        {% endif %}
+        {% if include.loop %}
+        loop: {{ include.loop }},
+        {% endif %}
+        {% if include.lang %}
+        lang: '{{ include.lang }}',
+        {% endif %}
+        {% if include.screenshot %}
+        screenshot: {{ include.screenshot }},
+        {% endif %}
+        {% if include.hotkey %}
+        hotkey: {{ include.hotkey ,
+        {% endif %}
+        {% if include.preload %}
+        preload: '{{ include.preload }}',
+        {% endif %}
+        video: {
+          url: '{{ include.video_url }}',
+          {% if include.video_pic %}
+          pic: '{{ include.video_pic }}',
+          {% endif %}
+          {% if include.video_type %}
+          type: '{{ include.video_type }}',
+          {% endif %}
+        },
+        {% if include.danmaku_id and include.danmaku_api %}
+        danmaku: {
+          id: '{{ include.danmaku_id }}',
+          api: '{{ include.danmaku_api }}',
+          {% if include.danmaku_token %}
+          token: '{{ include.danmaku_token }}',
+          {% endif %}
+          {% if include.danmaku_maximum %}
+          maximum: {{ include.danmaku_maximum }},
+          {% endif %}
+          {% if include.danmaku_addition %}
+          addition: {{ include.danmaku_addition }},
+          {% endif %}
+          {% if include.danmaku_user %}
+          user: {{ include.danmaku_user }},
+          {% endif %}
+        }
+        {% endif %}
+    });
+</script>
+{% endif %}
