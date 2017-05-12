@@ -1,6 +1,6 @@
-{% if include.video_url %}
+{% if include.video_url == null %}
 <p>Error: video_url not given</p>
-{% elsif include.divid %}
+{% elsif include.divid == null %}
 <p>Error: divid not given</p>
 <div id="{{ include.divid }}" class="dplayer"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dplayer/1.1.4/DPlayer.min.js"></script>
