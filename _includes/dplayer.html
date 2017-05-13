@@ -2,6 +2,7 @@
 <p>Error: video_url not given</p>
 {% elsif include.divid == null %}
 <p>Error: divid not given</p>
+{% else %}
 <div id="{{ include.divid }}" class="dplayer"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dplayer/1.1.4/DPlayer.min.js"></script>
 <script>
